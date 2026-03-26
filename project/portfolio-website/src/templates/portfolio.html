@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1>My Portfolio</h1>
+    <div class="portfolio-items">
+        {% for item in portfolio_items %}
+        <div class="portfolio-item">
+            <h2>{{ item.title }}</h2>
+            <img src="{{ item.image_url }}" alt="{{ item.title }}">
+            <p>{{ item.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
