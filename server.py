@@ -142,13 +142,17 @@ def server_error(error):
 # ============ Main ============
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', '5001'))
+    # Render sets RENDER=true; avoid debug mode in production
+    debug = os.environ.get('RENDER') is None
+
     print("=" * 55)
     print("  🎀 Madiha Firdous - Portfolio Server")
     print("=" * 55)
     print(f"  📁 Frontend: {FRONTEND_PATH}")
-    print(f"  🌐 Portfolio: http://localhost:5001")
-    print(f"  👑 Admin:     http://localhost:5001/admin")
+    print(f"  🌐 Portfolio: http://localhost:{port}")
+    print(f"  👑 Admin:     http://localhost:{port}/admin")
     print("=" * 55)
     print("\n  Press Ctrl+C to stop\n")
-    
-    app.run(host='0.0.0.0', port=5001, debug=True)
+
+    app.run(host='0.0.0.0', port=port, debug=debug)
